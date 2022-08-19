@@ -4,6 +4,10 @@ import { Link, graphql } from "gatsby"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import { StaticImage } from "gatsby-plugin-image"
+import Zoom from 'react-medium-image-zoom';
+
+import 'react-medium-image-zoom/dist/styles.css';
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
@@ -25,6 +29,19 @@ const BlogIndex = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <Bio />
+	  <Zoom>
+		<div className="wrapper" role="img">
+			<StaticImage
+				src="../images/earth-large.jpg"
+				alt="test image for test"
+				placeholder="blurred"
+				layout="constrained"
+				width={1920}
+				height={1080}
+				className="image-zoom"
+			/>
+		</div>
+	  </Zoom>
       <ol style={{ listStyle: `none` }}>
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
