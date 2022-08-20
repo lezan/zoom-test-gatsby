@@ -1,4 +1,4 @@
-import * as React from "react"
+import React, { useCallback, useState } from "react"
 import { Link, graphql } from "gatsby"
 
 import Bio from "../components/bio"
@@ -6,12 +6,15 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { StaticImage } from "gatsby-plugin-image"
 import Zoom from 'react-medium-image-zoom';
-
 import 'react-medium-image-zoom/dist/styles.css';
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
+
+  const [isImgLoaded, setIsImgLoaded] = useState(false)
+  const handleImgLoad = useCallback(() => setIsImgLoaded(true), [])
+  const ZoomComp = isImgLoaded ? Zoom : 'div'
 
   if (posts.length === 0) {
     return (
@@ -29,19 +32,18 @@ const BlogIndex = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <Bio />
-	  <Zoom>
-		<div className="wrapper" role="img">
-			<StaticImage
-				src="../images/earth-large.jpg"
-				alt="test image for test"
-				placeholder="blurred"
-				layout="constrained"
-				width={1920}
-				height={1080}
-				className="image-zoom"
-			/>
-		</div>
-	  </Zoom>
+      <ZoomComp>
+        <StaticImage
+          src="../images/earth-large.jpg"
+          alt="test image for test"
+          onLoad={handleImgLoad}
+          placeholder="blurred"
+          layout="constrained"
+          width={1920}
+          height={1080}
+          className="image-zoom"
+        />
+      </ZoomComp>
       <ol style={{ listStyle: `none` }}>
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
