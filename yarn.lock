@@ -9116,10 +9116,10 @@ react-lifecycles-compat@^3.0.4:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
-react-medium-image-zoom@^5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/react-medium-image-zoom/-/react-medium-image-zoom-5.0.1.tgz#f2965d334d361be4b406a6db38fd63da81bab766"
-  integrity sha512-ol1ELK6W4yEHG1cmYo09TCuP9sqOA87/6Xt9+l0vHTV+p+wrrallrkWGduHo1T0Iukmg6Ndm0qMQO63h7mOT/A==
+react-medium-image-zoom@5.0.2-beta.0:
+  version "5.0.2-beta.0"
+  resolved "https://registry.yarnpkg.com/react-medium-image-zoom/-/react-medium-image-zoom-5.0.2-beta.0.tgz#15230ea6fd89ffdc1daf893cc30027963c5a1372"
+  integrity sha512-K8xzWq/IhMjxaDMuiX++m6xA6qO7LjpDdAgYAekmju868K44VHHORxtIyMcP6LqVOSta4q8SJmEsuiukDg7a7w==
 
 react-refresh@^0.9.0:
   version "0.9.0"
