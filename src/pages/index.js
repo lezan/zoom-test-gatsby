@@ -4,7 +4,7 @@ import { Link, graphql } from "gatsby"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import { StaticImage,getImage } from "gatsby-plugin-image"
+import { StaticImage, getImage } from "gatsby-plugin-image"
 import Zoom from 'react-medium-image-zoom';
 import 'react-medium-image-zoom/dist/styles.css';
 
@@ -25,10 +25,12 @@ const BlogIndex = ({ data, location }) => {
     )
   }
 
+  const zoomImgData = getZoomImgData(data?.large)
+
   return (
     <Layout location={location} title={siteTitle}>
       <Bio />
-      <Zoom zoomImg={{ alt: "test large image alt", src: getImage(data?.large) }}>
+      <Zoom zoomImg={{ alt: "test large image alt", ...zoomImgData }}>
         <StaticImage
           src="../images/earth-large.jpg"
           alt="test image for test"
@@ -76,6 +78,14 @@ const BlogIndex = ({ data, location }) => {
 }
 
 export default BlogIndex
+
+const getZoomImgData = (largeImageData) => {
+  const imageData = getImage(largeImageData)
+  const src = imageData?.images?.fallback?.src
+  const { sizes, srcSet } = imageData?.images?.sources?.[0] ?? {}
+
+  return { src, sizes, srcSet }
+}
 
 /**
  * Head export to define metadata for the page
